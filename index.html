@@ -15,11 +15,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <link rel="stylesheet" href="css/reveal.min.css">
-    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/theme/beige.css" id="theme">
 
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
 
+    <script src="angular.js"></script>
+    <script src="main.js"></script>
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
     <script>
         if (window.location.search.match(/print-pdf/gi)) {
@@ -36,7 +39,7 @@
     <![endif]-->
 </head>
 
-<body>
+<body ng-app="Books">
 
 <div class="reveal">
 
@@ -44,57 +47,92 @@
     <div class="slides">
         <section>
             <h1>Scaleconf</h1>
+
             <h2>Simba/Zabil (Thoughtworks)</h2>
         </section>
         <section>
             <h1>History</h1>
         </section>
-        <section data-background-color="white">
+        <section>
             <img src="fat_client.GIF" width="400" border="0" style="border: none !important, box-shadow:none">
 
-            <h1 style="color: black">Thick clients</h1>
+            <h1>Thick clients</h1>
         </section>
         <section><h1>Rise of the browser</h1></section>
-        <section data-background-color="white">
+        <section>
             <img src="internetexploresvsnetscape.jpg" width="700" border="0"
                  style="border: none !important, box-shadow:none">
 
-            <h2 style="color: #000000">Browser wars I</h2>
+            <h2>Browser wars I</h2>
         </section>
-        <section data-background-color="rgb(241,243,235)">
+        <section>
             <img src="thinvfat.png" width="900" border="0"
                  style="border: none !important, box-shadow:none">
         </section>
 
 
-        <section data-background-color="rgb(255,255,255)">
-            <img src="ajax_logo.jpg" width="900" border="0">
+        <section>
+            <h1>AJAX</h1>
         </section>
 
 
-        <section data-background-color="rgb(246, 250, 234)">
+        <section>
             <img src="BrowserWarsFunny.jpg" width="700" border="0" style="border: none !important, box-shadow:none">
 
-            <h1 style="color: black">Browser wars II</h1>
+            <h1>Browser wars II</h1>
         </section>
         <section>
             <h2>Benchmarks</h2>
         </section>
 
-        <section data-background-color="rgb(8, 22, 48)">
+        <section>
             <img src="MobilevsDesktop.png" width="600" border="0">
 
             <h2>Device support</h2>
         </section>
 
 
-        <section data-background-color="white">
+        <section>
             <img src="ember-angular-backbone-1.png" border="0" style="border: none !important, box-shadow:none">
 
-            <h1 style="color: black">Javascript</h1>
+            <h1>Javascript</h1>
         </section>
 
-        <section data-background-color="white">
+        <section ng-controller="BookController">
+            <h2>Geeky Book Shelf</h2>
+
+            <div class="bootstrap">
+                <div class="pull-right well well-sm"><input type="text" ng-model="query"
+                                                            placeholder="Search for author, title"/></div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Author</th>
+                        <th>Title</th>
+                        <th>Cover</th>
+                    </tr>
+                    <tbody>
+                    <tr ng-repeat="book in books | filter: query">
+                        <td>
+                            {{book.author}}
+                        </td>
+                        <td>
+                            {{book.title}}
+                        </td>
+                        <td>
+                            <img ng-src="{{book.image}}" height="150">
+                        </td>
+                    </tr>
+                    </tbody>
+                    </thead>
+                    <tr></tr>
+
+                </table>
+                <span ng-show="(books |filter: query).length == 0">Sorry no results found for the given criteria.</span>
+
+            </div>
+        </section>
+        <section>
             <img src="HTML5_Logo_512.png"/>
         </section>
 
@@ -102,7 +140,7 @@
         <section><h2>Distribute processing power</h2></section>
 
         <section><h1>Design</h1></section>
-        <section data-background-color="white">
+        <section>
             <img src="micro-service-architecture.png" alt=""/>
         </section>
         <section>
