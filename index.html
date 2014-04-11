@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
 
-    <title>reveal.js - The HTML Presentation Framework</title>
+    <title>Scaleconf</title>
 
     <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-    <meta name="author" content="Hakim El Hattab">
+    <meta name="author" content="Zabil/Simba">
 
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
@@ -17,7 +17,19 @@
     <link rel="stylesheet" href="css/reveal.min.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/theme/beige.css" id="theme">
+    <style>
+        .column {
+            display: inline-block
+        }
 
+        #legend {
+            background: white
+        }
+
+        #legend .line {
+            color: #333
+        }
+    </style>
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
 
@@ -39,7 +51,7 @@
     <![endif]-->
 </head>
 
-<body ng-app="Books">
+<body>
 
 <div class="reveal">
 
@@ -47,114 +59,208 @@
     <div class="slides">
         <section>
             <h1>Scaleconf</h1>
-
-            <h2>Simba/Zabil (Thoughtworks)</h2>
+            <h2>Simba/Zabil</h2>
+            <h3>Thoughtworks</h3>
         </section>
-        <section>
-            <h1>History</h1>
-        </section>
-        <section>
-            <img src="fat_client.GIF" width="400" border="0" style="border: none !important, box-shadow:none">
-
-            <h1>Thick clients</h1>
-        </section>
-        <section><h1>Rise of the browser</h1></section>
+        <section><h1>The browser rules</h1></section>
         <section>
             <img src="internetexploresvsnetscape.jpg" width="700" border="0"
                  style="border: none !important, box-shadow:none">
-
             <h2>Browser wars I</h2>
         </section>
         <section>
-            <img src="thinvfat.png" width="900" border="0"
-                 style="border: none !important, box-shadow:none">
+            <img src="thinvfat.png" alt=""/>
         </section>
-
-
-        <section>
-            <h1>AJAX</h1>
-        </section>
-
-
         <section>
             <img src="BrowserWarsFunny.jpg" width="700" border="0" style="border: none !important, box-shadow:none">
-
             <h1>Browser wars II</h1>
+        </section>
+        <section>
+            <h2>Acid3</h2>
+            <img src="browserscope_acid3.png" alt=""/>
         </section>
         <section>
             <h2>Benchmarks</h2>
         </section>
-
+        <section>
+            <h2>Mandelbrot Set</h2>
+            <img src="c_java_js_mandebrot_benchmark.png" alt=""/>
+        </section>
+        <section>
+            <h2>N Body Simulation</h2>
+            <img src="c_java_js_n_body_benchmark.png" alt=""/>
+        </section>
         <section>
             <img src="MobilevsDesktop.png" width="600" border="0">
-
-            <h2>Device support</h2>
+            <h2>Browser wars 3</h2>
         </section>
 
 
         <section>
             <img src="ember-angular-backbone-1.png" border="0" style="border: none !important, box-shadow:none">
-
             <h1>Javascript</h1>
-        </section>
-
-        <section ng-controller="BookController">
-            <h2>Geeky Book Shelf</h2>
-
-            <div class="bootstrap">
-                <div class="pull-right well well-sm"><input type="text" ng-model="query"
-                                                            placeholder="Search for author, title"/></div>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Author</th>
-                        <th>Title</th>
-                        <th>Cover</th>
-                    </tr>
-                    <tbody>
-                    <tr ng-repeat="book in books | filter: query">
-                        <td>
-                            {{book.author}}
-                        </td>
-                        <td>
-                            {{book.title}}
-                        </td>
-                        <td>
-                            <img ng-src="{{book.image}}" height="150">
-                        </td>
-                    </tr>
-                    </tbody>
-                    </thead>
-                    <tr></tr>
-
-                </table>
-                <span ng-show="(books |filter: query).length == 0">Sorry no results found for the given criteria.</span>
-
-            </div>
+            <h1><img height="200" src="nodejs-dark.png" alt=""/></h1>
         </section>
         <section>
             <img src="HTML5_Logo_512.png"/>
         </section>
+        <section>
+            <h3>Offline storage</h3>
+        </section>
+        <section>
+            <h3>Canvas</h3>
+        </section>
+        <section>
+            <h3>Webworkers</h3>
+        </section>
+        <section>
+            <h3>Geo-location</h3>
+        </section>
+        <section>
+            <h2>Single page applications</h2>
+        </section>
+        <section>
+            <section ng-app="Books" ng-controller="BookController">
+                <div class="bootstrap">
+                    <table width="100%">
+                        <tr>
+                            <td width="50%"></td>
+                            <td style="text-align: right">
+                                <div class="input-group">
+                                    <span class="input-group-addon">@</span>
+                                    <input type="text" class="form-control" ng-model="query"
+                                           placeholder="Search for a book"/>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right" colspan="2">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default" ng-click="showList()">List</button>
+                                    <button type="button" class="btn btn-default" ng-click="showGrid()">Grid</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table" ng-show="list">
+                        <thead>
+                        <tr>
+                            <th>Cover</th>
+                            <th>Author</th>
+                            <th>Title</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="book in books | filter: query">
+                            <td><img src="{{book.cover}}" height="100"></td>
+                            <td>{{book.author}}</td>
+                            <td>{{book.title}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="row" ng-show="grid" style="padding: 10px">
+                        <div class="col-xs-3 col-md-2" data-ng-repeat="book in books | filter: query">
+                            <a href="#" class="thumbnail">
+                                <img ng-src="{{book.cover}}" height="150">
+                            </a>
+                        </div>
+                    </div>
+                    <span ng-show="(books |filter: query).length == 0">Sorry no results found for the given criteria.</span>
 
-        <section><h2>Fat Thin Clients(?)</h2></section>
-        <section><h2>Distribute processing power</h2></section>
+                </div>
+            </section>
+            <section>
+                <h2>Traditional</h2>
+<pre><code data-trim lang="html">
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Author&lt;/th&gt;
+        &lt;th&gt;Title&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Douglas Adams&lt;/td&gt;
+        &lt;td&gt;Hitchhikers guide to the galaxy&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;JRR Tolkien&lt;/td&gt;
+        &lt;td&gt;Lord of the rings&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+            </section>
+            <section>
+                <h2>/books</h2>
+                <h3>get</h3>
+    <pre><code data-trim>
+[
+    {author: "Douglas Adams", title: "Hitchhikers guide to the galaxy"} ,
+    {author: "JRR Tolkien", title: "Lord of the rings"},
+    {author: "Douglas Richard Hofstadter",
+    title: "Gödel, Escher, Bach: an Eternal Golden Braid"},
+    {author: "Brian and Dennis", title: "The C Programming language"},
+    {author: "Kent Beck", title: "Test Driven Development"},
+    {author: "Various", title: "Thoughtworks anthology", cover: "twa2.jpg"}
+];
+    </code></pre>
+            </section>
+            <section>
+                <h2>Partial</h2>
+            <pre><code data-trim>
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Author&lt;/th&gt;
+        &lt;th&gt;Title&lt;/th&gt;
+    &lt;/tr&gt;
+        &lt;tr ng-repeat="book in books"&gt;
+        &lt;td&gt;&#123;&#123;book.author&#125&#125;&lt;/td&gt;
+    &lt;td&gt;{{book.title}}&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+            </code></pre>
+            </section>
 
+        </section>
+        <section>
+            <h2>Interactive...</h2>
+            <img src="payment_not_exceeded.png">
+        </section>
+        <section>
+            <h2>Interactive</h2>
+            <img src="payment_exceeded.png">
+        </section>
         <section><h1>Design</h1></section>
         <section>
             <img src="micro-service-architecture.png" alt=""/>
         </section>
+
         <section>
-            <h1>REST/JSON</h1>
+            <h2>Deployment</h2>
+            <img src="apache.png" alt=""/>
         </section>
-        <section><h2>Single code base</h2></section>
-        <section><h2>Limitations</h2></section>
-        <section><h2>Single thread execution</h2></section>
-        <section><h2>Device compatibility</h2></section>
+        <section>
+            <h1>Development</h1>
+        </section>
+        <section><h2>Unified code base</h2></section>
+        <section><h2>Feedback</h2></section>
+        <section><h2>Testing</h2></section>
+        <section><h2>Continuous Integration</h2></section>
+        <section><h2>Trunk based development</h2></section>
+        <section><h1 style="color:red">Limitations</h1></section>
+        <section><img src="unresponsive_script.png" alt=""/></section>
+        <section><h2>Predictability</h2></section>
         <section><h2>Domain modelling</h2></section>
-        <section><h2>Care</h2></section>
+        <section>
+            <h2>Uncanny valley</h2>
+            <p class="fragment">When human features look and move almost like human
+                beings it causes revulsion among human observers</p>
+        </section>
+        <section><h2>Javascript</h2></section>
 
         <section>
             <h1>?</h1>
+            <p>snyatsa@thoughtworks.com</p>
+            <p>zabilcm@thoughtworks.com</p>
+            <p>www.thoughtworks.com</p>
         </section>
 
     </div>
@@ -163,7 +269,7 @@
 
 <script src="lib/js/head.min.js"></script>
 <script src="js/reveal.min.js"></script>
-
+<script src="js/rickshaw.js"></script>
 <script>
 
     // Full list of configuration options available here:
